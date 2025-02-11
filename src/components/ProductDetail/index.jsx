@@ -1,30 +1,23 @@
+import { useContext } from 'react'
+import { ShoppingCartContext } from '../../Context'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import './styles.css'
 
 const ProductDetail = () => {
+    const context = useContext(ShoppingCartContext)
+
     return (
-        <aside className='product-detail flex flex-col fixed right-0 border border-black rounded-lg bg-white'>
+        <aside 
+            className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex-col fixed right-0 border border-black rounded-lg bg-white`}
+        >
             <div className='flex justify-between itmes-center p-6'>
                 <h2 className='font-medium text-xl'>Detail</h2>
-                <div>
-                    <XMarkIcon className="size-6 text-black" />
-                    {/* <svg 
-                        className="size-6"
-                        xmlns="http://www.w3.org/2000/svg" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        strokeWidth={1.5} 
-                        stroke="currentColor" 
-                    >
-                        <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            d="M6 18 18 6M6 6l12 12" 
-                        />
-                    </svg> */}
-                </div>
-
-
+                <button>
+                    <XMarkIcon 
+                        className="size-6 text-black"
+                        onClick={() => context.closeProductDetail()}
+                    />
+                </button>
             </div>
         </aside>
     )
