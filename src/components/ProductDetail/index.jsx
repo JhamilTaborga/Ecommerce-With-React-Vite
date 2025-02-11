@@ -1,3 +1,4 @@
+import { XMarkIcon } from '@heroicons/react/24/solid'
 import './styles.css'
 
 const ProductDetail = () => {
@@ -6,7 +7,8 @@ const ProductDetail = () => {
             <div className='flex justify-between itmes-center p-6'>
                 <h2 className='font-medium text-xl'>Detail</h2>
                 <div>
-                    <svg 
+                    <XMarkIcon className="size-6 text-black" />
+                    {/* <svg 
                         className="size-6"
                         xmlns="http://www.w3.org/2000/svg" 
                         fill="none" 
@@ -19,7 +21,7 @@ const ProductDetail = () => {
                             strokeLinejoin="round" 
                             d="M6 18 18 6M6 6l12 12" 
                         />
-                    </svg>
+                    </svg> */}
                 </div>
 
 
