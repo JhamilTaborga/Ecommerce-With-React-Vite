@@ -6,7 +6,6 @@ import './styles.css'
 
 const CheckoutSideMenu = () => {
     const context = useContext(ShoppingCartContext)
-    console.log('CART: ', context.cartProducts)
 
     return (
         <aside 
