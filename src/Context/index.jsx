@@ -11,7 +11,7 @@ export const ShoppingCartProvider = ({ children }) => {
     const openProductDetail = () => setIsproductDetailOpen(true)
     const closeProductDetail = () => setIsproductDetailOpen(false)
 
-    // Product Detail · Open/Close
+    // Checkout Side Menu · Open/Close
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
     const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
     const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
