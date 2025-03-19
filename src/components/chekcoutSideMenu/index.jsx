@@ -35,7 +35,7 @@ const CheckoutSideMenu = () => {
                 <h2 className='font-medium text-xl'>My Order</h2>
                 <button>
                     <XMarkIcon 
-                        className="size-6 text-black"
+                        className='size-6 text-black'
                         onClick={() => context.closeCheckoutSideMenu()}
                     />
                 </button>
