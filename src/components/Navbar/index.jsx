@@ -18,6 +18,7 @@ const Navbar = () => {
                 <li>
                     <NavLink 
                         to='/'
+                        onClick={() => context.setSearchByCategory()}
                         className={({ isActive }) => 
                             isActive ? activeStyle : undefined
                         }
@@ -28,6 +29,7 @@ const Navbar = () => {
                 <li>
                     <NavLink 
                         to='/clothes'
+                        onClick={() => context.setSearchByCategory('clothes')}
                         className={({ isActive }) => 
                             isActive ? activeStyle : undefined
                         }
@@ -38,6 +40,7 @@ const Navbar = () => {
                 <li>
                     <NavLink 
                         to='/electronics'
+                        onClick={() => context.setSearchByCategory('electronics')}
                         className={({ isActive }) => 
                             isActive ? activeStyle : undefined
                         }
@@ -48,6 +51,7 @@ const Navbar = () => {
                 <li>
                     <NavLink 
                         to='/furnitures'
+                        onClick={() => context.setSearchByCategory('furniture')}
                         className={({ isActive }) => 
                             isActive ? activeStyle : undefined
                         }
@@ -57,17 +61,19 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink 
-                        to='/toys'
+                        to='/shoes'
+                        onClick={() => context.setSearchByCategory('shoes')}
                         className={({ isActive }) => 
                             isActive ? activeStyle : undefined
                         }    
                     >
-                        Toys
+                        Shoes
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
                         to='/others'
+                        onClick={() => context.setSearchByCategory('miscellaneous')}
                         className={({ isActive }) => 
                             isActive ? activeStyle : undefined
                         }
