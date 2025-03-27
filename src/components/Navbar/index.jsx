@@ -11,7 +11,8 @@ const Navbar = () => {
         <nav className='w-full flex justify-between items-center fixed z-10 top-0 py-5 px-8 text-base font-light '>
             <ul className='flex items-center gap-3'>
                 <li className='font-semibold text-xl'>
-                    <NavLink to='/' >
+                    <NavLink to='/' 
+                    onClick={() => context.setSearchByCategory()}>
                         Shopi
                     </NavLink>
                 </li>
@@ -118,7 +119,7 @@ const Navbar = () => {
                 </li>
                 <li className='flex items-center'>
                     <ShoppingBagIcon className='size-6 text-black' />
-                    <div>{ context.count }</div>
+                    <div>{context.cartProducts.length}</div>
                 </li>
             </ul>
         </nav>
