@@ -6,6 +6,7 @@ import MyOrder from '../MyOrder'
 import MyOrders from '../MyOrders'
 import NotFound from '../NotFound'
 import SignIn from '../SignIn'
+import SignUp from '../SignUp'
 import Navbar from '../../components/Navbar'
 import CheckoutSideMenu from '../../components/chekcoutSideMenu'
 import './App.css'
@@ -24,6 +25,7 @@ const AppRoutes = () => {
     { path: '/my-orders/last', element: <MyOrder /> },
     { path: '/my-orders/:id', element: <MyOrder /> },
     { path: '/sign-in', element: <SignIn /> },
+    { path: '/sign-up', element: <SignUp />},
     { path: '/*', element: <NotFound /> },/*El "*" hace que cuando se pone cualquier otra ruta que no tengamos definidas acá las dirige a este componente (a esa página)*/
   ])
 
