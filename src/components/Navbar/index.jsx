@@ -6,6 +6,11 @@ import { ShoppingCartContext } from '../../Context'
 const Navbar = () => {
     const context = useContext(ShoppingCartContext)
     const activeStyle = 'underline underline-offset-4'
+
+    // Sign Out
+    const signOut = localStorage.getItem('sign-out')
+    const parsedSignOut = JSON.parse(signOut)
+    const isUserSignOut = context.signOut || parsedSignOut
     
     const handleSignOut = () => {
         const stringifiedSignOut = JSON.stringify(true)
@@ -13,6 +18,58 @@ const Navbar = () => {
         context.setSignOut(true)
     }
 
+    const renderView = () => {
+        if (isUserSignOut) {
+            return  (
+                <li>
+                    <NavLink
+                        to={'/sign-in'}
+                        className={({ isActive }) => isActive ? activeStyle : undefined }
+                        onClick={() => handleSignOut()}>
+                        Sign In
+                    </NavLink>
+                </li>
+            )
+        } else {
+            return (
+                <>
+                    <li className='text-black/60'>
+                        jhamil@dev.com
+                    </li>
+                    <li>
+                        <NavLink 
+                            to='/my-orders'
+                            className={({ isActive }) => 
+                                isActive ? activeStyle : undefined
+                            }
+                        >
+                            My Orders
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to='/my-account'
+                            className={({ isActive }) => 
+                                isActive ? activeStyle : undefined
+                            }
+                        >
+                            My Account
+                        </NavLink>
+                    </li>
+                    <li>
+                    <NavLink
+                        to='/sign-in'
+                        className={({ isActive }) => 
+                            isActive ? activeStyle : undefined
+                        } 
+                        onClick={() => handleSignOut()}>
+                        Sign out
+                    </NavLink>
+                </li>
+                </>
+            )
+        }
+    }
     return (
         <nav className='w-full flex justify-between items-center fixed z-10 top-0 py-5 px-8 text-base font-light '>
             <ul className='flex items-center gap-3'>
@@ -90,30 +147,8 @@ const Navbar = () => {
                 </li>
             </ul>
             <ul className='flex items-center gap-3'>
-                <li className='text-black/60'>
-                    jhamil@dev.com
-                </li>
-                <li>
-                    <NavLink 
-                        to='/my-orders'
-                        className={({ isActive }) => 
-                            isActive ? activeStyle : undefined
-                        }
-                    >
-                        My Orders
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                        to='/my-account'
-                        className={({ isActive }) => 
-                            isActive ? activeStyle : undefined
-                        }
-                    >
-                        My Account
-                    </NavLink>
-                </li>
-                <li>
+                
+                {/* <li>
                     <NavLink 
                         to='/sign-in'
                         className={({ isActive }) => 
@@ -122,17 +157,8 @@ const Navbar = () => {
                     >
                         Sign In
                     </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to='/sign-in'
-                        className={({ isActive }) => 
-                            isActive ? activeStyle : undefined
-                        } 
-                        onClick={() => handleSignOut()}>
-                        Sign out
-                    </NavLink>
-                </li>
+                </li> */}
+                {renderView()}
                 <li className='flex items-center'>
                     <ShoppingBagIcon className='size-6 text-black' />
                     <div>{context.cartProducts.length}</div>

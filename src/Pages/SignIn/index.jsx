@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Layout from '../../components/Layout'
 
 function SignIn() {
@@ -22,7 +23,7 @@ function SignIn() {
         
         <button className='w-full h-10 text-white font-semibold bg-slate-500 rounded-full'>Log In</button>
 
-        <p className='w-full text-sm font-light text-center'>Don't have account? <a href='../sign-up' className='font-semibold'>Sign Up</a></p>
+        <p className='w-full text-sm font-light text-center'>Don't have account? <Link to={'../sign-up'} className='font-semibold'>Sign Up</Link></p>
       </form>
     </Layout>
   )
