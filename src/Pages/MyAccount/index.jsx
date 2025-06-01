@@ -77,9 +77,9 @@ function MyAccount() {
             className='rounded-lg border border-black placeholder:font-light placeholder:text-sm placerholder:text-black/60 focus:outline-none py-2 px-4' />
         </div>
         <button
-          className='bg-balck text-white w-full  rounded-lg py-3'
+          className='bg-black text-white w-full  rounded-lg py-3'
           onClick={() => {setView('user-info'), editAccount()}}
-        ></button>
+        >Edit</button>
       </form>
     )
   }
