@@ -1,11 +1,27 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ShoppingCartContext } from '../../Context'
+import { UserIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
 import ShoppingCart from '../../components/ShoppingCart'
 
 const Navbar = () => {
     const context = useContext(ShoppingCartContext)
     const activeStyle = 'underline underline-offset-4'
+
+    // NavBar Account
+    const [isNavOpen, setIsNavOpen] = useState(false)
+    const popupRef = useRef(null)
+
+    const toggleOpen = () => setIsNavOpen(!isNavOpen)
+    const handleClickOutside = (event) => {
+        if (popupRef.current && !popupRef.current.contains(event.target)) {
+            setIsNavOpen(false)
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside)
+    }, [])
 
     // Sign Out
     const signOut = localStorage.getItem('sign-out')
@@ -30,39 +46,49 @@ const Navbar = () => {
         if (hasUserAnAccount && !isUserSignOut) {
             return  (
                 <>
-                    <li className='text-black/60'>
+                    <li 
+                    className='flex hover:cursor-pointer active:scale-110 duration-100'
+                    onClick={toggleOpen}>
+                        <ChevronDownIcon className='size-4 text-black'/>
+                        <UserIcon className='size-6 text-black'/>
+                    </li>
+                    <li className='hidden md:block text-black/60'>
                         {parsedAccount?.email}
                     </li>
-                    <li>
-                        <NavLink 
-                            to='/my-orders'
-                            className={({ isActive }) => 
-                                isActive ? activeStyle : undefined
-                            }
-                        >
-                            My Orders
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink 
-                            to='/my-account'
-                            className={({ isActive }) => 
-                                isActive ? activeStyle : undefined
-                            }
-                        >
-                            My Account
-                        </NavLink>
-                    </li>
-                    <li>
-                    <NavLink
-                        to='/sign-in'
-                        className={({ isActive }) => 
-                            isActive ? activeStyle : undefined
-                        } 
-                        onClick={() => handleSignOut()}>
-                        Sign out
-                    </NavLink>
-                </li>
+
+                    <div ref={popupRef} className={`fixed top-14 ${isNavOpen ? 'flex' : 'hidden'} flex-col  items-center min-w-28  bg-slate-50 right-10 md:right-36 min-h-24 rounded-lg justify-evenly border border-black`}>
+                        <li className='text-center hover:scale-90'>
+                            <NavLink 
+                                to='/my-orders'
+                                className={({ isActive }) => 
+                                    isActive ? activeStyle : undefined
+                                }
+                            >
+                                My Orders
+                            </NavLink>
+                        </li>
+                        <li className='text-center hover:scale-90'>
+                            <NavLink 
+                                to='/my-account'
+                                className={({ isActive }) => 
+                                    isActive ? activeStyle : undefined
+                                }
+                            >
+                                My Account
+                            </NavLink>
+                        </li>
+                        <li className='text-center hover:scale-90'>
+                            <NavLink
+                                to='/sign-in'
+                                className={({ isActive }) => 
+                                    isActive ? activeStyle : undefined
+                                } 
+                                onClick={() => handleSignOut()}
+                            >
+                                Sign out
+                            </NavLink>
+                        </li>
+                    </div>
                 </>
             )
         } else {
@@ -87,7 +113,7 @@ const Navbar = () => {
                         Shopi
                     </NavLink>
                 </li>
-                <li>
+                <li className='hidden lg:block'>
                     <NavLink 
                         to='/'
                         onClick={() => context.setSearchByCategory()}
@@ -98,7 +124,7 @@ const Navbar = () => {
                         All
                     </NavLink>
                 </li>
-                <li>
+                <li className='hidden lg:block'>
                     <NavLink 
                         to='/clothes'
                         onClick={() => context.setSearchByCategory('clothes')}
@@ -109,7 +135,7 @@ const Navbar = () => {
                         Clothes
                     </NavLink>
                 </li>
-                <li>
+                <li className='hidden lg:block'>
                     <NavLink 
                         to='/electronics'
                         onClick={() => context.setSearchByCategory('electronics')}
@@ -120,7 +146,7 @@ const Navbar = () => {
                         Electronics
                     </NavLink>
                 </li>
-                <li>
+                <li className='hidden lg:block'>
                     <NavLink 
                         to='/furnitures'
                         onClick={() => context.setSearchByCategory('furniture')}
@@ -131,7 +157,7 @@ const Navbar = () => {
                         Furnitures
                     </NavLink>
                 </li>
-                <li>
+                <li className='hidden lg:block'>
                     <NavLink 
                         to='/shoes'
                         onClick={() => context.setSearchByCategory('shoes')}
@@ -142,7 +168,7 @@ const Navbar = () => {
                         Shoes
                     </NavLink>
                 </li>
-                <li>
+                <li className='hidden lg:block'>
                     <NavLink 
                         to='/others'
                         onClick={() => context.setSearchByCategory('miscellaneous')}

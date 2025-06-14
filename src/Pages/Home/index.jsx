@@ -27,15 +27,15 @@ function Home() {
     return (
       <Layout> 
         <div className='flex items-center justify-center relative w-80 mb-6'>
-          <h1 className='font-medium text-xl mb-4'>Exclusibe Products</h1>
+          <h1 className='font-medium text-xl'>Exclusibe Products</h1>
         </div>
         <input 
           type="text" 
           placeholder='Search a product'
-          className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none'
+          className='rounded-lg border border-black w-60 sm:w-80 p-4 mb-8 focus:outline-none'
           onChange={event => context.setSearchByTitle(event.target.value)}
           />
-        <section className='grid grid-cols-4 gap-4 w-full max-w-screen-lg'>
+        <section className='grid grid-cols-[repeat(auto-fit,_minmax(220px,_1fr))] gap-8 container px-16'>
         {renderView()}
         </section>
         <ProductDetail />
