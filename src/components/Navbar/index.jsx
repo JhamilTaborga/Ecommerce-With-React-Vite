@@ -57,7 +57,7 @@ const Navbar = () => {
                     </li>
 
                     <div ref={popupRef} className={`fixed top-14 ${isNavOpen ? 'flex' : 'hidden'} flex-col  items-center min-w-28  bg-slate-50 right-10 md:right-36 min-h-24 rounded-lg justify-evenly border border-black`}>
-                        <li className='text-center hover:scale-90'>
+                        <li className='text-center w-full hover:cursor-pointer hover:font-normal'>
                             <NavLink 
                                 to='/my-orders'
                                 className={({ isActive }) => 
@@ -67,7 +67,7 @@ const Navbar = () => {
                                 My Orders
                             </NavLink>
                         </li>
-                        <li className='text-center hover:scale-90'>
+                        <li className='text-center w-full hover:cursor-pointer hover:font-normal'>
                             <NavLink 
                                 to='/my-account'
                                 className={({ isActive }) => 
@@ -77,7 +77,7 @@ const Navbar = () => {
                                 My Account
                             </NavLink>
                         </li>
-                        <li className='text-center hover:scale-90'>
+                        <li className='text-center w-full hover:cursor-pointer hover:font-normal'>
                             <NavLink
                                 to='/sign-in'
                                 className={({ isActive }) => 

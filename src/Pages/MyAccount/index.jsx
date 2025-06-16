@@ -25,7 +25,7 @@ function MyAccount() {
 
   const renderUserInfo = () => {
     return (
-      <div className='flex flex-col w-80'>
+      <div className='flex flex-col w-72 md:w-80 border border-gray-400 justify-center px-6 py-8 rounded-2xl'>
         <p>
           <span className='font-light text-sm'>Name: </span>
           <span>{parsedAccount?.name}</span>
@@ -35,17 +35,18 @@ function MyAccount() {
           <span>{parsedAccount?.email}</span>
         </p>
         <button 
-          className='border border-black rounded-lg mt-6 py-3'
-          onClick={() => setView('edit-user-info')}>
-            Edit
-          </button>
+          className='font-semibold text-white bg-slate-500 border border-black rounded-full mt-6 py-3'
+          onClick={() => setView('edit-user-info')}
+        >
+          Edit
+        </button>
       </div>
     )
   }
 
   const renderEditUserInfo = () => {
     return (
-      <form ref={form} className='flex flex-col gap-4 w-80'>
+      <form ref={form} className='flex flex-col border border-gray-400 px-6 py-8 rounded-2xl my-4 gap-4 w-72 md:w-80'>
         <div className='flex flex-col gap-1'>
           <label htmlFor='name' className='font-light text-sm'>Your name:</label>
           <input 
@@ -77,7 +78,7 @@ function MyAccount() {
             className='rounded-lg border border-black placeholder:font-light placeholder:text-sm placerholder:text-black/60 focus:outline-none py-2 px-4' />
         </div>
         <button
-          className='bg-black text-white w-full  rounded-lg py-3'
+          className='bg-slate-500 text-white border border-black font-semibold w-full mt-3 rounded-full py-3'
           onClick={() => {setView('user-info'), editAccount()}}
         >Edit</button>
       </form>
@@ -88,7 +89,7 @@ function MyAccount() {
 
     return (
       <Layout>
-        <h1 className='font-medium text-xl mb-4'>My account</h1>
+        <h1 className='font-medium text-xl mb-3'>My account</h1>
         {renderView()}
         {/* <section className='min-w-80 px-6 py-4 flex flex-col items-start justify-center border border-gray-400 rounded-2xl'>
           <h3 className='font-medium text-lg '>Name</h3>

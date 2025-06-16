@@ -44,7 +44,7 @@ function SignIn() {
     return (
       <>
         <h1 className='font-medium text-xl mb-4'>Log In</h1>
-        <form className='min-w-80 px-6 py-8 mt-4 flex flex-col items-start justify-center gap-y-5 border border-gray-400 rounded-2xl'>
+        <form className='min-w-72 md:min-w-80 px-6 py-8 my-4 flex flex-col items-start justify-center gap-y-5 border border-gray-400 rounded-2xl'>
           
           <p>
             <span className='font-light text-sm'>Email: </span>
@@ -84,7 +84,7 @@ function SignIn() {
           <p className='w-full text-sm font-light text-center'>
             Don't have account? 
             <button
-              className='ml-2 p-1 border border-black disabled:text-balck/40 disabled:border-balck/40 rounded-lg' 
+              className='ml-2 p-1 border border-black disabled:text-balck/40 disabled:border-black/40 rounded-lg' 
               onClick={() => setView('create-user-info')}
               disabled={hasUserAnAccount}>
               Sign Up
