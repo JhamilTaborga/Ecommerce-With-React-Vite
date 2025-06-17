@@ -9,7 +9,7 @@ const ProductDetail = () => {
 
     return (
         <aside 
-            className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex-col fixed right-0 border border-black rounded-lg bg-white`}
+            className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} flex-col top-[68px] w-screen sm:w-[350px] h-[calc(100vh-68px)]  fixed right-0 border border-black rounded-lg bg-white overflow-y-auto`}
         >
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>Detail</h2>
@@ -20,16 +20,18 @@ const ProductDetail = () => {
                     />
                 </button>
             </div>
-            <figure className='px-6 flex flex-col overflow-y-auto'>
+            <figure className='px-6 flex flex-col items-center overflow-y-auto'>
                 <img 
-                    className='w-full rounded-lg'
+                    className='max-w-[300px] px-3 sm:px-1 sm:w-full rounded-lg'
                     src={context.productToShow.images?.[0]} 
                     alt={context.productToShow.title} 
                 />
-                <p className='flex flex-col p-6'>
-                    <span className='font-medium text-2xl'>${context.productToShow.price}</span>
-                    <span className='font-medium text-md'>${context.productToShow.title}</span>
-                    <span className='font-medium text-sm'>${context.productToShow.description}</span>
+                <p className='flex flex-col max-w-[300px] py-6 px-3'>
+                    <div className='flex justify-between items-center mb-4'>
+                        <span className='font-medium text-md'>{context.productToShow.title}</span>
+                        <span className='font-medium text-2xl ml-2'>${context.productToShow.price}</span>
+                    </div>
+                    <span className='font-light text-sm'>{context.productToShow.description}</span>
                 </p>
             </figure>
         </aside>

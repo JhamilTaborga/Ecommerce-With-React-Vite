@@ -31,7 +31,7 @@ const CheckoutSideMenu = () => {
 
     return (
         <aside 
-            className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-0 border border-black rounded-lg bg-white`}
+            className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} flex-col top-[68px] w-screen sm:w-[350px] h-[calc(100vh-68px)] px-2 sm:px-1 fixed right-0 sm:border sm:border-black rounded-lg bg-white`}
         >
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>My Order</h2>
@@ -42,7 +42,7 @@ const CheckoutSideMenu = () => {
                     />
                 </button>
             </div>
-            <div className='px-6 overflow-y-auto flex-1'>
+            <div className='px-6 flex flex-col gap-4 overflow-y-auto flex-1'>
             {
                 context.cartProducts.map(product => (
                     <OrderCard 
@@ -56,13 +56,13 @@ const CheckoutSideMenu = () => {
                 ))
             }
             </div>
-            <div className='px-6 mb-6'>
+            <div className='px-6 mb-6 mt-2'>
                 <p className='mb-2 flex justify-between items-center'>
-                    <span className='font-light'>Total:</span>
+                    <span className='font-normal'>Total:</span>
                     <span className='font-medium text-2xl'>${totalPrice(context.cartProducts)}</span>
                 </p>
                 <Link to='/my-orders/last' >
-                <button className='w-full py-3 bg-black text-white rounded-lg ' onClick={() => handleCheckout()}>Checkout</button>
+                <button className='w-full py-3 bg-slate-400 text-white font-semibold rounded-full ' onClick={() => handleCheckout()}>Checkout</button>
                 </Link>
             </div>
         </aside>
